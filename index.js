@@ -10,9 +10,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes)
 
 
-
-
-
 app.listen(8080, ()=>(
     console.log('servidor ok en 8080')
 ));

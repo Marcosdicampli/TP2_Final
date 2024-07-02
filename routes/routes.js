@@ -1,21 +1,13 @@
 import { Router } from "express";
-import PalabrasController from "../controllers/PalabrasController.js";
+import validarDatos from "../middlewares/validationMiddleware.js";
+import SondasController from "../controllers/SondasController.js";
 
-const routes= Router()
+const routes = Router();
+const sondasController = new SondasController();
 
-const palabrasController=new PalabrasController()
+// endpoints
+routes.post('/sondas', validarDatos, sondasController.ingresarDatos);
+routes.get('/sondas', sondasController.listarSondas);
+routes.get('/sonda/:id', sondasController.listarSondasPorId);
 
-//endpoints
-
-routes.post("/",palabrasController.createPalabra)
-routes.get("/",palabrasController.getPalabras)
-routes.delete("/:palabra",palabrasController.deletePalabra)
-//routes.get("/:id")
-
-//routes.delete("/:id")
-//routes.get("/:id")
-
-
-
-
-export default routes
+export default routes;
